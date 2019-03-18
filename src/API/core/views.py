@@ -32,6 +32,12 @@ class cadastroMercadoria(APIView): #Classe responvel por realizar o cadastro do 
         serializer = EstoqueSerializer(data=request.data) #Coletando as informacoes enviadas pelo usuario
         if serializer.is_valid():
             serializer.save()
+            est = Estoque.objects.all()
+            cont = len(est)
+            cont = cont - 1
+            cod = est[cont].codigo
+            qtd = request.data['quantidade']
+            Historico.objects.create(fk_codigo=est[cont], entrada = datetime.datetime.now(), quantidade=qtd)
             return render(request, 'cadastro.html', {'form': form,'style': style,'msg': sucesso})
         else:
             return render(request, 'cadastro.html', {'form': form,'style': style,'msg': error})
