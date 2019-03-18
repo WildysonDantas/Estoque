@@ -1,0 +1,33 @@
+{% load staticfiles %}
+{% load rest_framework %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cadastro de Mercadoria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <h2 style="text-align:center; color: white"> Controle de Estoque</h2>  
+        <h5> Informe os dados de entrada</h5>
+        
+        <form action='/registroentrada/' method="post">  {% csrf_token %}
+                {% render_field form.fk_codigo style=style %}
+                {% render_field form.entrada style=style %}
+                {% render_field form.quantidade style=style %}
+                <h6 style="color: red;">{{ msg }}</h6>
+                <div class="bts">
+                    <a href="{% url 'Movimentacao'%}" type="button" class="btn btn-primary">Voltar</a>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </div>
+            </div>
+         </form>
+    </div>
+</body>
+</html>

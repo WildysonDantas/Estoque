@@ -1,0 +1,89 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Consulta de Estoque</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+    <div class="containerC">
+        <h2 style="text-align:center;"> Controle de Estoque</h2>
+        <label> Informe o codigo da mercadoria que deseja consultar</label>
+        <form class="form-group"action="/consulta/" method="POST">
+            <select name="codigo">
+                    {% for x in queryset%}
+                        <option value="{{x.nome}}">{{x.nome}}</option>
+                    {% endfor %} 
+                </select>
+            
+            <div style="flex-direction: row; margin-top: 5%">
+                <a href="{% url 'Estoque'%}" type="button" class="btn btn-primary">Voltar</a>
+                <button type="submit" class="btn btn-primary">Consultar</button>
+            </div>
+        </form>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Entrada</th> 
+                <th scope="col">Saida</th>
+                <th scope="col">Quantidade</th>
+                </tr>
+            </thead>
+            <thbody style="position: fixed;overflow-y:scrol">                
+                    {% for x in estoque %}
+                        <tr>
+                        <th scope="row" >{{ x.fk_codigo }}</th>
+                        <td > 
+                            {% if x.entrada != None %}
+                                {{ x.entrada }}
+                            {% endif %}  
+                        </td> 
+                        <td>
+                            {% if x.saida != None %}
+                                {{ x.saida }}
+                            {% endif %}
+                        </td>
+                        <td>{{ x.quantidade }}</td>
+                        </tr>
+                    {% endfor %}
+               
+            </thbody>  
+        </table> 
+    </div>
+
+</body>
+</html>
+
+<style>
+    /* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+     .containerC {
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center
+    }
+  
+
+</style>
