@@ -90,11 +90,11 @@ INTERNAL_IPS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environment.get('POSTGRESQL_ADDON_DB'),
-        'USER': os.environment.get('POSTGRESQL_ADDON_USER'),
+        'NAME': os.environ.get('POSTGRESQL_ADDON_DB'),
+        'USER': os.environ.get('POSTGRESQL_ADDON_USER'),
         'PASSWORD': os.environ.get('POSTGRESQL_ADDON_PASSWORD'),
-        'HOST': os.environment.get('POSTGRESQL_ADDON_HOST'),
-        'PORT': os.environment.get('POSTGRESQL_ADDON_PORT')
+        'HOST': os.environ.get('POSTGRESQL_ADDON_HOST'),
+        'PORT': os.environ.get('POSTGRESQL_ADDON_PORT')
         
     }
 }
