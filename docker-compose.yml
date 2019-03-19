@@ -25,14 +25,14 @@ services:
     depends_on:
       - db
     env_file: 
-      - env
+      - .env
       
   
   db:
     image: postgres
     container_name: dbpostgree
     env_file: 
-      - env
+      - .env
       
   migration:
     image: postgres
