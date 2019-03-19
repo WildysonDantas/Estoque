@@ -24,20 +24,12 @@ services:
       - "8080:8080"
     depends_on:
       - db
-   
-      
+  
   
   db:
     image: postgres
     container_name: dbpostgree
-    environments:
-      POSTGRES_HOST=bgejwgc7ew8hgb4jjmzn-postgresql.services.clever-cloud.com
-      POSTGRES_DB=bgejwgc7ew8hgb4jjmzn
-      POSTGRES_USER=utclm3iqa5n5gryhskhx
-      POSTGRES_PORT=5432
-      POSTGRES_PASSWORD=gR6jgAFRqqLFLU02w537 
-    volumes:
-      - ./data/postgres:/var/lib/postgresql/data
+   
       
   migration:
     image: postgres
