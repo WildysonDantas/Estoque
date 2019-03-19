@@ -13,4 +13,4 @@ ADD . /code/
 EXPOSE 8080
 #RUN python src/API/manage.py runserver 0.0.0.0:8080
 
-CMD python src/API/manage.py runserver 0.0.0.0:8080
+CMD python src/API/manage.py migrate && python src/API/manage.py runserver 0.0.0.0:8080
