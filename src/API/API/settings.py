@@ -90,9 +90,9 @@ INTERNAL_IPS = [
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'HOST': 'db',
+        'NAME': 'bgejwgc7ew8hgb4jjmzn',
+        'USER': 'utclm3iqa5n5gryhskhx',
+        'HOST': 'gR6jgAFRqqLFLU02w537',
         'PORT': 5432
 
     }
