@@ -24,14 +24,10 @@ services:
       - "8080:8080"
     depends_on:
       - db
+    env_file: env
   db:
     image: postgres
     container_name: dbpostgree
-    environment:
-      POSTGRESQL_ADDON_HOST=bgejwgc7ew8hgb4jjmzn-postgresql.services.clever-cloud.com
-      POSTGRESQL_ADDON_DB=bgejwgc7ew8hgb4jjmzn
-      POSTGRESQL_ADDON_USER=utclm3iqa5n5gryhskhx
-      POSTGRESQL_ADDON_PORT=5432
-      POSTGRESQL_ADDON_PASSWORD=gR6jgAFRqqLFLU02w537 
+    env_file: env
 
 
