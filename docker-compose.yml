@@ -16,7 +16,7 @@ services:
   web:
     build: .
     container_name: aplicacao1
-    command: python src/API/manage.py runserver 0.0.0.0:8080
+    command: python src/API/manage.py migrate && python src/API/manage.py runserver 0.0.0.0:8080
    
     volumes:
       - .:/code
