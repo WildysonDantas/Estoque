@@ -13,5 +13,5 @@ ADD . /code/
 EXPOSE 8000
 
 #CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-run python src/API/manage.py migrate
+
 CMD python src/API/manage.py runserver 0.0.0.0:8000
