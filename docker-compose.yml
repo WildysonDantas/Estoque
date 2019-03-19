@@ -6,7 +6,7 @@ services:
     image: nginx
     container_name: ng01
     ports:
-      - "80:8000"
+      - "80:8080"
     volumes:
       - ./src:/src
       - ./config/nginx:/etc/nginx/conf.d
@@ -16,12 +16,12 @@ services:
   web:
     build: .
     container_name: aplicacao1
-    command: python src/API/manage.py runserver 0.0.0.0:8000
+    command: python src/API/manage.py runserver 0.0.0.0:8080
    
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "8080:8080"
     depends_on:
       - db
   db:
