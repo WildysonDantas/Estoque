@@ -8,7 +8,6 @@ from rest_framework.permissions import IsAuthenticated, BasicAuthentication
 
 
 class EstoqueViewSet(APIView): #index
-    permission_classes = (IsAuthenticated, BasicAuthentication)
     ''' Controle de Estoque'''
     def get(self, request):
         return render(request, 'index.html', {})
