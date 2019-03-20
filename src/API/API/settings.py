@@ -95,14 +95,13 @@ INTERNAL_IPS = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'db',
-        'PORT': 5432
-        
-    }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		'NAME': os.getenv('POSTGRESQL_ADDON_DB'),
+		'USER': os.getenv('POSTGRESQL_ADDON_USER'),
+		'PASSWORD': os.getenv('POSTGRESQL_ADDON_PASSWORD'),
+		'HOST': os.getenv('POSTGRESQL_ADDON_HOST'),
+		'PORT': os.getenv('POSTGRESQL_ADDON_PORT')
+	}
 }
 
 
