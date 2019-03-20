@@ -31,15 +31,4 @@ services:
     container_name: dbpostgree
     ports:
     - "5432:5432"
-   
-      
-  migration:
-    image: postgres
-    container_name: migrations
-    command: python src/API/manage.py migrate
-    volumes:
-      - .:/code
-    depends_on:
-      - db
-
 
