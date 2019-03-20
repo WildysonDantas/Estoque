@@ -4,7 +4,7 @@ import datetime
 from .models import Estoque, Historico
 from rest_framework.views import APIView
 from .serializers import EstoqueSerializer, HistoricoSerializer, SaidaSerializer, EntradaSerializer
-from rest_framework.permissions import IsAuthenticated, BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 class EstoqueViewSet(APIView): #index
