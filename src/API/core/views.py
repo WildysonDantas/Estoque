@@ -4,17 +4,19 @@ import datetime
 from .models import Estoque, Historico
 from rest_framework.views import APIView
 from .serializers import EstoqueSerializer, HistoricoSerializer, SaidaSerializer, EntradaSerializer
+from rest_framework.permissions import AllowAny
 from rest_framework.permissions import IsAuthenticated
-
-
+from rest_framework.authentication import BasicAuthentication,SessionAuthentication
 class EstoqueViewSet(APIView): #index
-    ''' Controle de Estoque'''
-    def get(self, request):
-        return render(request, 'index.html', {})
+	''' Controle de Estoque'''
+	#authentication_classes = (SessionAuthentication,)
+	
+	def get(self, request):
+		return render(request, 'index.html', {})
 
         
 class cadastroMercadoria(APIView): #Classe responvel por realizar o cadastro do estoque
-    permission_classes = (IsAuthenticated,)
+
     #Metodo para coletar as informacoes do formulario e rendereizar na pagina
     def get(self, request):
         print( datetime.datetime.now())
@@ -45,7 +47,7 @@ class cadastroMercadoria(APIView): #Classe responvel por realizar o cadastro do 
 
 
 class entrada(APIView): #classe responvavel pelo registro de entrada do estoque
-    permission_classes = (IsAuthenticated,)
+
     def get( self, request):
         style = {'template_pack': 'rest_framework/vertical/'}
         form = EntradaSerializer() #Coletando o historico de entrada
@@ -70,7 +72,6 @@ class entrada(APIView): #classe responvavel pelo registro de entrada do estoque
 
 
 class saida(APIView): #Classe responvel pelo registro de saida do etoque
-    permission_classes = (IsAuthenticated,)
     def get( self, request):
         style = {'template_pack': 'rest_framework/vertical/'}
         form = SaidaSerializer()
@@ -103,7 +104,7 @@ def movimentacao(request): #metodo responsavel por exibir as opcoes de registro
 
     return render(request, 'movimentacao.html', {})
 class ConsultaEstoque(APIView): #classe responsavel pela consulta
-    permission_classes = (IsAuthenticated,)
+    
     def get(self, request):
         queryset = Historico.objects.all() # pegando as informacoes do historico
         return render(request, 'consulta.html', {'estoque': queryset, 'queryset':  getHistorico()})
